@@ -1,8 +1,7 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { cloudinary } from '@/config';
 import { MultipartFile } from '@fastify/multipart';
-import { prisma } from '@/lib/prisma';
-
+import { prisma } from '../../lib/prisma';
+import { cloudinary } from '../../config';
 interface FormData {
   name?: string;
   title?: string;
