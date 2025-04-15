@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id          String @id @default(uuid())
+  name        String
+  logo        String
+  description String
+  subname     String @default("")
+  instagram   String @default("")
+  linkedin    String @default("")
+  whatsapp    String @default("")
+  email       String @default("")
+
+  Links Links[]
+
+  @@map("companies")
+}
+
+model Links {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  url         String
+  icon_url    String
+  order       Int
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  company    Company @relation(fields: [company_id], references: [id])
+  company_id String
+
+  @@map("links")
+}
+
+// npx prisma migrate dev --name linksInfo
+// npx prisma generate
