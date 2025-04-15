@@ -1,4 +1,4 @@
-import fastify from "fastify"
+import fastify, { FastifyReply, FastifyRequest } from "fastify"
 import cors from '@fastify/cors' // Importe o plugin CORS
 import { register } from "./http/controllers/register"
 import { deleteCompany } from "./http/controllers/delete"
@@ -34,6 +34,14 @@ app.register(multipart, {
   limits: {
     fileSize: 100 * 1024 * 1024, // 100MB
   },
+})
+
+app.get("/", (request: FastifyRequest, reply: FastifyReply) => {
+  return reply.send(`
+    <h1 style='font-family: sans-serif'>
+        API do Sistema de vagas ASSUMTEK!!!
+    <h1>
+  `)
 })
 
 

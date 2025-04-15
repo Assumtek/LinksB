@@ -31,6 +31,13 @@ exports.app.register(multipart_1.default, {
         fileSize: 100 * 1024 * 1024, // 100MB
     },
 });
+exports.app.get("/", (request, reply) => {
+    return reply.send(`
+    <h1 style='font-family: sans-serif'>
+        API do Sistema de vagas ASSUMTEK!!!
+    <h1>
+  `);
+});
 exports.app.post('/uploadimagem', registerCompany_1.enviarImagem);
 exports.app.post('/panel', register_1.register);
 exports.app.delete('/panel', delete_1.deleteCompany);
