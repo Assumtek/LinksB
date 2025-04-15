@@ -2,19 +2,22 @@ import { FastifyRequest, FastifyReply } from 'fastify'
 import { prisma } from "../../lib/prisma"
 import { z } from "zod"
 
+
+
+
 export async function listCompany(request: FastifyRequest, reply: FastifyReply) {
 
   console.log("Começou");
   const listBodySchema = z.object({
-    id: z.string().uuid(),
+    name: z.string(),
   })
   
 
   try {
-    const { id } = listBodySchema.parse(request.body); // Valida o corpo da requisição
+    const { name }  = listBodySchema.parse(request.body); // Valida o corpo da requisição
 
-    const company = await prisma.company.findUnique({
-      where: { id },
+    const company = await prisma.company.findFirst({
+      where: { name:name },
       select:{
         name: true,
         description: true,
