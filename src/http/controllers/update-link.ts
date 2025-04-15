@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '../../lib/prisma';
 import { z } from 'zod';
 
 export async function updateLinks(request: FastifyRequest, reply: FastifyReply) {
