@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { cloudinary } from '@/config';
+import { cloudinary } from '../../config';
 import { MultipartFile } from '@fastify/multipart';
 
 interface FormData {

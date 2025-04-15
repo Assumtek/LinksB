@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.enviarImagem = enviarImagem;
-const config_1 = require("@/config");
+const config_1 = require("../../config");
 async function enviarImagem(request, reply) {
     if (!request.isMultipart()) {
         return reply.status(400).send({ message: 'Requisição não é multipart.' });
