@@ -39,7 +39,7 @@ app.register(multipart, {
 app.get("/", (request: FastifyRequest, reply: FastifyReply) => {
   return reply.send(`
     <h1 style='font-family: sans-serif'>
-        API do Sistema de vagas ASSUMTEK!!!
+        API do Sistema de Links!!!
     <h1>
   `)
 })

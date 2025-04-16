@@ -6,12 +6,12 @@ const zod_1 = require("zod");
 async function listCompany(request, reply) {
     console.log("Começou");
     const listBodySchema = zod_1.z.object({
-        id: zod_1.z.string().uuid(),
+        name: zod_1.z.string(),
     });
     try {
-        const { id } = listBodySchema.parse(request.body); // Valida o corpo da requisição
-        const company = await prisma_1.prisma.company.findUnique({
-            where: { id },
+        const { name } = listBodySchema.parse(request.body); // Valida o corpo da requisição
+        const company = await prisma_1.prisma.company.findFirst({
+            where: { name: name },
             select: {
                 name: true,
                 description: true,

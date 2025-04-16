@@ -16,6 +16,9 @@ export async function listCompany(request: FastifyRequest, reply: FastifyReply) 
   try {
     const { name }  = listBodySchema.parse(request.body); // Valida o corpo da requisição
 
+    console.log("Pegando informações da empresa")
+    console.log("Nome enviado", name)
+
     const company = await prisma.company.findFirst({
       where: { name:name },
       select:{
@@ -36,7 +39,10 @@ export async function listCompany(request: FastifyRequest, reply: FastifyReply) 
       }
     });
 
+    console.log("Empresa achada", company)
+
     if (!company) {
+      console.log("Erro ao achar empresa")
       return reply.status(404).send({ error: 'Company not found' });
     }
 
